@@ -19,11 +19,11 @@
     };
 
     prowlarr.enable = true; # Search
-    bazarr.enable = true; # Subtitles
     jellyseerr.enable = true; # Web Search & Request
 
     radarr.enable = true; # Movies
     sonarr.enable = true; # TV
+    whisparr.enable = true; # XXX
   };
 
   services.flaresolverr = {
