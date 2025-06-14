@@ -10,7 +10,8 @@
       wgConf = "/media/.secrets/wg.conf";
     };
 
-    jellyfin.enable = true;
+    jellyfin.enable = true; # Shows
+    komga.enable = true; # Manga
 
     transmission = {
       enable = true;
@@ -23,6 +24,11 @@
 
     radarr.enable = true; # Movies
     sonarr.enable = true; # TV
+  };
+
+  services.flaresolverr = {
+    enable = true;
+    openFirewall = true;
   };
 
   # VPN Port Forwarding

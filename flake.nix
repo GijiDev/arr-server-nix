@@ -4,7 +4,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixarr = {
-      url = "github:rasmus-kirk/nixarr";
+      url = "github:GijiDev/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
