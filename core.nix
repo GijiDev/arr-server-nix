@@ -14,6 +14,9 @@
     git
     git-lfs
 
+    # file mgmt
+    yazi
+
     # archives
     zip
     unzip
