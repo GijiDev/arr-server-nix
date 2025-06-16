@@ -31,8 +31,8 @@
       nixosConfigurations.hashida-itaru = nixpkgs.lib.nixosSystem {
         specialArgs = inputs;
         modules = [
-          ./configuration.nix
           nixarr.nixosModules.default
+          ./configuration.nix
         ];
       };
     };

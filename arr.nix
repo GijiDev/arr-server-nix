@@ -1,4 +1,4 @@
-{ transmission-protonvpn, ... }:
+{ transmission-protonvpn, pkgs, ... }:
 {
   nixarr = {
     enable = true;
@@ -23,7 +23,29 @@
 
     radarr.enable = true; # Movies
     sonarr.enable = true; # TV
-    whisparr.enable = true; # XXX
+    whisparr = {
+      # XXX
+      enable = true;
+      package = pkgs.whisparr.overrideAttrs (
+        # Use eros (v3) branch
+        finalAttrs: previousAttrs:
+        let
+          inherit (previousAttrs) pname;
+          version = "3.0.0.1124";
+          # Hardcode, could be improved for other os/arch combos later
+          arch = "x64";
+          os = "linux";
+        in
+        {
+          src = pkgs.fetchurl {
+            name = "${pname}-${arch}-${os}-${version}.tar.gz";
+            url = "https://whisparr.servarr.com/v1/update/eros/updatefile?runtime=netcore&version=${version}&arch=${arch}&os=${os}";
+            hash = "sha256-fTBhL+GRjR0EJSo0tqtp+rtRb5qaEty895lTDWW3Dyo=";
+          };
+
+        }
+      );
+    };
   };
 
   services.flaresolverr = {
