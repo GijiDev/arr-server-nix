@@ -7,6 +7,7 @@
 
     vpn = {
       enable = true;
+      accessibleFrom = [ "10.0.0.0/24" ]; # Local network
       wgConf = "/media/.secrets/wg.conf";
     };
 
@@ -77,10 +78,5 @@
   systemd.services.transmission-protonvpn.vpnconfinement = {
     enable = true;
     vpnnamespace = "wg"; # This must be "wg", that's what nixarr uses
-  };
-
-  networking.firewall = {
-    # Open ports for Jellyseerr
-    allowedTCPPorts = [ 5055 ];
   };
 }

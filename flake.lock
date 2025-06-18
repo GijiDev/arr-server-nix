@@ -134,11 +134,11 @@
         "website-builder": "website-builder"
       },
       "locked": {
-        "lastModified": 1749844971,
-        "narHash": "sha256-r+mc/xMFMpEcT/tAiOeHhOvzBH5Lq7KCcj4vNHYE/6Y=",
+        "lastModified": 1750231590,
+        "narHash": "sha256-yAnPCcd6lqJS5phNlW0ZN2LLD0P0ILTRVPJpgwwpgFA=",
         "owner": "GijiDev",
         "repo": "nixarr",
-        "rev": "a4826317d2c2d4aec654af16ba204e988171ca39",
+        "rev": "03f2b59c95404a8e21b4ba2d9c4d7ea13578980c",
         "type": "github"
       },
       "original": {
@@ -265,11 +265,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748552643,
-        "narHash": "sha256-UI3dlA/6WOitW3ejPhwYvB/yxrVWpdTmh96Hl8CEUis=",
+        "lastModified": 1750078291,
+        "narHash": "sha256-VfEXZ2gcOB4M9y0fjxazJcChJyzNe5WiP7v3tgH04kM=",
         "owner": "rasmus-kirk",
         "repo": "website-builder",
-        "rev": "f399b9c89d45a0150ce6230c6df23f62f9c3cf89",
+        "rev": "f4605389da7159424a53bcd8781be0e59c63a325",
         "type": "github"
       },
       "original": {
