@@ -1,0 +1,27 @@
+radarr:
+  anime-radarr:
+    base_url: http://localhost:7878
+    api_key: !env_var RADARR_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+
+    include:
+      # Comment out any of the following includes to disable them
+      - template: radarr-quality-definition-anime
+      - template: radarr-quality-profile-anime
+      - template: radarr-custom-formats-anime
+
+sonarr:
+  anime-sonarr-v4:
+    base_url: http://localhost:8989
+    api_key: !env_var SONARR_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+
+    include:
+      # Comment out any of the following includes to disable them
+      - template: sonarr-quality-definition-anime
+      - template: sonarr-v4-quality-profile-anime
+      - template: sonarr-v4-custom-formats-anime

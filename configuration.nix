@@ -5,9 +5,9 @@
     ./hardware-configuration.nix
     ./modules
     ./secrets
+    ./arr
 
     ./core.nix
-    ./arr.nix
   ];
 
   services.discord-music-bot = {
