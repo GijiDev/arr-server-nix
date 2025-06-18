@@ -134,11 +134,11 @@
         "website-builder": "website-builder"
       },
       "locked": {
-        "lastModified": 1750231590,
-        "narHash": "sha256-yAnPCcd6lqJS5phNlW0ZN2LLD0P0ILTRVPJpgwwpgFA=",
+        "lastModified": 1750234919,
+        "narHash": "sha256-7JcuBmcG6ZZRVM6SOWME8lCSYg7DyW1DysgyaNo+jBY=",
         "owner": "GijiDev",
         "repo": "nixarr",
-        "rev": "03f2b59c95404a8e21b4ba2d9c4d7ea13578980c",
+        "rev": "c27316814540c5bf82d5fe30d086fc8ed7d7fd38",
         "type": "github"
       },
       "original": {
