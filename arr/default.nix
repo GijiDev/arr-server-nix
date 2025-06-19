@@ -41,8 +41,9 @@
         finalAttrs: previousAttrs:
         let
           inherit (previousAttrs) pname;
-          version = "3.0.0.1124";
+          version = "3.0.0.1127";
           # Hardcode, could be improved for other os/arch combos later
+          hash = "sha256-XeOMEWSG98Bu4xRaon7MeN2PBrLiAAAyPzFQAsVvWw0=";
           arch = "x64";
           os = "linux";
         in
@@ -50,7 +51,7 @@
           src = pkgs.fetchurl {
             name = "${pname}-${arch}-${os}-${version}.tar.gz";
             url = "https://whisparr.servarr.com/v1/update/eros/updatefile?runtime=netcore&version=${version}&arch=${arch}&os=${os}";
-            hash = "sha256-fTBhL+GRjR0EJSo0tqtp+rtRb5qaEty895lTDWW3Dyo=";
+            inherit hash;
           };
 
         }
