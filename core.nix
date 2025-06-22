@@ -34,11 +34,17 @@
     tree
     gnutar
     rsync
+    pciutils
   ];
 
   services.openssh.enable = true;
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDUUPY6lPF+VKdJyuu2FQu8u9YXZLtMrW05DkMwyS2cn"
+  ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
