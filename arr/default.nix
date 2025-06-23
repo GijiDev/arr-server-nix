@@ -32,7 +32,9 @@
     jellyseerr.enable = true; # Web Search & Request
 
     radarr.enable = true; # Movies
+    radarr-anime.enable = true; # Movies
     sonarr.enable = true; # TV
+    sonarr-anime.enable = true; # TV
     whisparr = {
       # XXX
       enable = true;

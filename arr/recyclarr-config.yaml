@@ -1,5 +1,5 @@
 radarr:
-  anime-radarr:
+  main-radarr:
     base_url: http://localhost:7878
     api_key: !env_var RADARR_API_KEY
 
@@ -7,13 +7,35 @@ radarr:
     replace_existing_custom_formats: true
 
     include:
-      # Comment out any of the following includes to disable them
+      - template: radarr-quality-definition-movie
+      - template: radarr-quality-profile-uhd-bluray-web
+      - template: radarr-custom-formats-uhd-bluray-web
+
+    custom_formats:
+      - trash_ids:
+          # Comment out the next line if you and all of your users' setups are fully DV compatible
+          - 923b6abef9b17f937fab56cfcf89e1f1 # DV (WEBDL)
+
+          # HDR10+ Boost - Uncomment the next two lines if any of your devices DO support HDR10+
+          - b17886cb4158d9fea189859409975758 # HDR10Plus Boost
+          - 55a5b50cb416dea5a50c4955896217ab # DV HDR10+ Boost
+        assign_scores_to:
+          - name: UHD Bluray + WEB
+
+  anime-radarr:
+    base_url: http://localhost:7879
+    api_key: !env_var RADARR_ANIME_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+
+    include:
       - template: radarr-quality-definition-anime
       - template: radarr-quality-profile-anime
       - template: radarr-custom-formats-anime
 
 sonarr:
-  anime-sonarr-v4:
+  main-sonarr:
     base_url: http://localhost:8989
     api_key: !env_var SONARR_API_KEY
 
@@ -21,7 +43,30 @@ sonarr:
     replace_existing_custom_formats: true
 
     include:
-      # Comment out any of the following includes to disable them
+      - template: sonarr-quality-definition-series
+      - template: sonarr-v4-quality-profile-web-2160p
+      - template: sonarr-v4-custom-formats-web-2160p
+
+    custom_formats:
+      # HDR Formats
+      - trash_ids:
+          # Comment out the next line if you and all of your users' setups are fully DV compatible
+          - 9b27ab6498ec0f31a3353992e19434ca # DV (WEBDL)
+
+          # HDR10+ Boost - Uncomment the next two lines if any of your devices DO support HDR10+
+          - 0dad0a507451acddd754fe6dc3a7f5e7 # HDR10+ Boost
+          - 385e9e8581d33133c3961bdcdeffb7b4 # DV HDR10+ Boost
+        assign_scores_to:
+          - name: WEB-2160p
+
+  anime-sonarr-v4:
+    base_url: http://localhost:8990
+    api_key: !env_var SONARR_ANIME_API_KEY
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+
+    include:
       - template: sonarr-quality-definition-anime
       - template: sonarr-v4-quality-profile-anime
       - template: sonarr-v4-custom-formats-anime
