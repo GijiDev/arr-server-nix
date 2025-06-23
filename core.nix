@@ -1,12 +1,5 @@
 { pkgs, ... }:
 {
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "hashida-itaru";
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-
   time.timeZone = "America/Los_Angeles";
 
   environment.systemPackages = with pkgs; [

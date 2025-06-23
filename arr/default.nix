@@ -42,7 +42,6 @@
         let
           inherit (previousAttrs) pname;
           version = "3.0.0.1127";
-          # Hardcode, could be improved for other os/arch combos later
           hash = "sha256-XeOMEWSG98Bu4xRaon7MeN2PBrLiAAAyPzFQAsVvWw0=";
           arch = "x64";
           os = "linux";

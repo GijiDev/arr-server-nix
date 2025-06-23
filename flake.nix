@@ -3,11 +3,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixarr = {
       url = "github:GijiDev/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,15 +24,13 @@
   outputs =
     inputs@{
       nixpkgs,
-      agenix,
       nixarr,
       ...
     }:
     {
-      nixosConfigurations.hashida-itaru = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.arr = nixpkgs.lib.nixosSystem {
         specialArgs = inputs;
         modules = [
-          agenix.nixosModules.default
           nixarr.nixosModules.default
           ./configuration.nix
         ];
