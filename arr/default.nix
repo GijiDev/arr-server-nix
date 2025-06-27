@@ -1,4 +1,12 @@
-{ transmission-protonvpn, pkgs, ... }:
+{
+  transmission-protonvpn,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  hostname = "worldline.local";
+in
 {
   nixarr = {
     enable = true;
@@ -17,11 +25,15 @@
     transmission = {
       enable = true;
       vpn.enable = true;
+      extraSettings = {
+        rpc-host-whitelist = "transmission.${hostname}";
+        ratio-limit-enabled = true;
+        ratio-limit = 2.0;
+      };
     };
 
     recyclarr = {
       # TRaSH Guides Sync
-      # TODO: look into using multi-service, for now just using for anime
       enable = true;
 
       # Would use `configuration`, but current generator breaks env var use
@@ -80,5 +92,74 @@
   systemd.services.transmission-protonvpn.vpnconfinement = {
     enable = true;
     vpnnamespace = "wg"; # This must be "wg", that's what nixarr uses
+  };
+
+  services.nginx = {
+    enable = true;
+
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+
+    virtualHosts =
+      let
+        ports = {
+          jellyseerr = 5055;
+          komga = 25600;
+          prowlarr = 9696;
+          radarr = 7878;
+          radarr-anime = 7879;
+          sonarr = 8989;
+          sonarr-anime = 8990;
+          transmission = 9091;
+          whisparr = 6969;
+        };
+      in
+      builtins.listToAttrs (
+        lib.attrsets.mapAttrsToList (name: port: {
+          name = "${name}.${hostname}";
+          value = {
+            locations."/" = {
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              proxyPass = "http://127.0.0.1:${builtins.toString port}";
+            };
+          };
+        }) ports
+      )
+      // {
+        # Jellyfin requires special handling
+        # https://jellyfin.org/docs/general/post-install/networking/reverse-proxy/nginx/
+        "jellyfin.${hostname}" = {
+          locations = {
+            "/" = {
+              recommendedProxySettings = true;
+              proxyPass = "http://127.0.0.1:8096";
+              extraConfig = ''
+                # Disable buffering when the nginx proxy gets very resource heavy upon streaming
+                proxy_buffering off;
+              '';
+            };
+            "/socket" = {
+              recommendedProxySettings = true;
+              proxyWebsockets = true;
+              proxyPass = "http://127.0.0.1:8096";
+            };
+          };
+        };
+        # Default catch-all
+        "_" = {
+          default = true;
+          locations = {
+            "/" = {
+              return = "404";
+            };
+          };
+        };
+      };
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [ 80 ];
   };
 }
