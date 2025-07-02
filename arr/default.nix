@@ -8,6 +8,8 @@ let
   hostname = "worldline.local";
 in
 {
+  imports = [ ./nhentai-sync ];
+
   nixarr = {
     enable = true;
     mediaDir = "/media/media";
