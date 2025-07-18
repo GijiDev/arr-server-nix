@@ -6,6 +6,12 @@ radarr:
     delete_old_custom_formats: true
     replace_existing_custom_formats: true
 
+    media_naming:
+      folder: jellyfin
+      movie:
+        rename: true
+        standard: jellyfin
+
     include:
       - template: radarr-quality-definition-movie
       - template: radarr-quality-profile-uhd-bluray-web
@@ -29,6 +35,12 @@ radarr:
     delete_old_custom_formats: true
     replace_existing_custom_formats: true
 
+    media_naming:
+      folder: jellyfin
+      movie:
+        rename: true
+        standard: anime-jellyfin
+
     include:
       - template: radarr-quality-definition-anime
       - template: radarr-quality-profile-anime
@@ -42,6 +54,15 @@ sonarr:
     delete_old_custom_formats: true
     replace_existing_custom_formats: true
 
+    media_naming:
+      series: jellyfin
+      season: default
+      episodes:
+        rename: true
+        standard: default
+        daily: default
+        anime: default
+
     include:
       - template: sonarr-quality-definition-series
       - template: sonarr-v4-quality-profile-web-1080p-alternative
@@ -53,6 +74,15 @@ sonarr:
 
     delete_old_custom_formats: true
     replace_existing_custom_formats: true
+
+    media_naming:
+      series: jellyfin
+      season: default
+      episodes:
+        rename: true
+        standard: default
+        daily: default
+        anime: default
 
     include:
       - template: sonarr-quality-definition-anime
