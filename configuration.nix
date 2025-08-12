@@ -1,9 +1,9 @@
 {
   imports = [
-    ./proxmox.nix
-    ./core.nix
     ./hardware-configuration.nix
-
-    ./arr
+    ./modules/arr
+    ./modules/core.nix
+    ./modules/proxmox.nix
+    ./modules/reverse-proxy
   ];
 }
