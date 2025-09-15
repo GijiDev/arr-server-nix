@@ -13,10 +13,6 @@
     # archives
     zip
     unzip
-    p7zip
-
-    # Text Processing
-    jq
 
     # networking tools
     wget
@@ -24,10 +20,7 @@
 
     # misc
     which
-    tree
-    gnutar
     rsync
-    pciutils
   ];
 
   services.openssh.enable = true;
