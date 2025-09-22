@@ -16,6 +16,8 @@ radarr:
       - template: radarr-quality-definition-movie
       - template: radarr-quality-profile-uhd-bluray-web
       - template: radarr-custom-formats-uhd-bluray-web
+      - template: radarr-quality-profile-hd-bluray-web
+      - template: radarr-custom-formats-hd-bluray-web
 
     custom_formats:
       - trash_ids:
@@ -45,6 +47,12 @@ radarr:
       - template: radarr-quality-definition-anime
       - template: radarr-quality-profile-anime
       - template: radarr-custom-formats-anime
+
+    custom_formats:
+      - trash_ids:
+          - d6e9318c875905d6cfb5bee961afcea9 # Language: Original Only
+        assign_scores_to:
+          - name: Remux-1080p - Anime
 
 sonarr:
   main-sonarr:
