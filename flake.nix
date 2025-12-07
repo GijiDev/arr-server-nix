@@ -1,6 +1,10 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Having troubles with upstream jellyfin
+    # > Illegal instruction (core dumped)
+    # Pin to last known good version
+    nixpkgs.url = "github:NixOS/nixpkgs?rev=6158d9170f0c55f07123559161447f657dc9f887";
+
     flake-utils.url = "github:numtide/flake-utils";
 
     nixarr = {
@@ -17,8 +21,11 @@
     };
     transmission-protonvpn = {
       url = "github:pborzenkov/transmission-protonvpn-nat-pmp";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.gomod2nix.follows = "gomod2nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        gomod2nix.follows = "gomod2nix";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     poetry2nix = {

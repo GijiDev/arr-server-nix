@@ -9,7 +9,5 @@
       lower = "02:00";
       upper = "06:00";
     };
-
-    runGarbageCollection = true;
   };
 }
