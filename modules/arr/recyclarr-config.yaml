@@ -14,10 +14,38 @@ radarr:
 
     include:
       - template: radarr-quality-definition-movie
-      - template: radarr-quality-profile-uhd-bluray-web
       - template: radarr-custom-formats-uhd-bluray-web
-      - template: radarr-quality-profile-hd-bluray-web
       - template: radarr-custom-formats-hd-bluray-web
+
+    quality_profiles:
+      - name: HD Bluray + WEB
+        reset_unmatched_scores:
+          enabled: true
+        upgrade:
+          allowed: false
+        min_format_score: 0
+        quality_sort: top
+        qualities:
+          - name: Bluray-1080p
+          - name: WEB 1080p
+            qualities:
+              - WEBDL-1080p
+              - WEBRip-1080p
+          - name: Bluray-720p
+
+      - name: UHD Bluray + WEB
+        reset_unmatched_scores:
+          enabled: true
+        upgrade:
+          allowed: false
+        min_format_score: 0
+        quality_sort: top
+        qualities:
+          - name: Bluray-2160p
+          - name: WEB 2160p
+            qualities:
+              - WEBDL-2160p
+              - WEBRip-2160p
 
     custom_formats:
       - trash_ids:
@@ -45,8 +73,41 @@ radarr:
 
     include:
       - template: radarr-quality-definition-anime
-      - template: radarr-quality-profile-anime
       - template: radarr-custom-formats-anime
+
+    quality_profiles:
+      - name: Remux-1080p - Anime
+        reset_unmatched_scores:
+          enabled: true
+        upgrade:
+          allowed: false
+        min_format_score: 100
+        score_set: anime-radarr
+        quality_sort: top
+        qualities:
+          - name: Remux-1080p
+            qualities:
+              - Bluray-1080p
+              - Remux-1080p
+          - name: WEB 1080p
+            qualities:
+              - WEBDL-1080p
+              - WEBRip-1080p
+              - HDTV-1080p
+          - name: Bluray-720p
+          - name: WEB 720p
+            qualities:
+              - WEBDL-720p
+              - WEBRip-720p
+              - HDTV-720p
+          - name: Bluray-576p
+          - name: Bluray-480p
+          - name: WEB 480p
+            qualities:
+              - WEBDL-480p
+              - WEBRip-480p
+          - name: DVD
+          - name: SDTV
 
     custom_formats:
       - trash_ids:
@@ -73,8 +134,31 @@ sonarr:
 
     include:
       - template: sonarr-quality-definition-series
-      - template: sonarr-v4-quality-profile-web-1080p-alternative
       - template: sonarr-v4-custom-formats-web-1080p
+
+    quality_profiles:
+      - name: WEB-1080p
+        reset_unmatched_scores:
+          enabled: true
+        upgrade:
+          allowed: true
+          until_quality: WEB 1080p
+          until_score: 10000
+        min_format_score: 0
+        quality_sort: top
+        qualities:
+          - name: WEB 1080p
+            qualities:
+              - WEBDL-1080p
+              - WEBRip-1080p
+          - name: Bluray-1080p
+          - name: HDTV-1080p
+          - name: WEB 720p
+            qualities:
+              - WEBDL-720p
+              - WEBRip-720p
+          - name: Bluray-720p
+          - name: HDTV-720p
 
   anime-sonarr-v4:
     base_url: http://localhost:8990
@@ -94,5 +178,39 @@ sonarr:
 
     include:
       - template: sonarr-quality-definition-anime
-      - template: sonarr-v4-quality-profile-anime
       - template: sonarr-v4-custom-formats-anime
+
+    quality_profiles:
+      - name: Remux-1080p - Anime
+        reset_unmatched_scores:
+          enabled: true
+        upgrade:
+          allowed: true
+          until_quality: Bluray-1080p
+          until_score: 10000
+        min_format_score: 100
+        score_set: anime-sonarr
+        quality_sort: top
+        qualities:
+          - name: Bluray-1080p
+            qualities:
+              - Bluray-1080p Remux
+              - Bluray-1080p
+          - name: WEB 1080p
+            qualities:
+              - WEBDL-1080p
+              - WEBRip-1080p
+              - HDTV-1080p
+          - name: Bluray-720p
+          - name: WEB 720p
+            qualities:
+              - WEBDL-720p
+              - WEBRip-720p
+              - HDTV-720p
+          - name: Bluray-480p
+          - name: WEB 480p
+            qualities:
+              - WEBDL-480p
+              - WEBRip-480p
+          - name: DVD
+          - name: SDTV

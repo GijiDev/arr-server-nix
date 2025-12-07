@@ -1,7 +1,7 @@
 {
   imports = [
     ./media-clients.nix
-    ./nhentai-sync
+    ./nhentai-sync.nix
     ./starr.nix
     ./torrent.nix
   ];

@@ -20,6 +20,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.gomod2nix.follows = "gomod2nix";
     };
+
+    poetry2nix = {
+      url = "github:nix-community/poetry2nix";
+      inputs = {
+        # specifically don't follow nixpkgs - depends on older version
+        flake-utils.follows = "flake-utils";
+      };
+    };
   };
   outputs =
     inputs@{

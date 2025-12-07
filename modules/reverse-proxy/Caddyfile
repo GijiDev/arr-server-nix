@@ -30,6 +30,10 @@ http://sonarr.worldline.local {
   reverse_proxy 127.0.0.1:8989
 }
 
+http://whisparr.worldline.local {
+  reverse_proxy 127.0.0.1:6969
+}
+
 http://transmission.worldline.local {
   reverse_proxy 127.0.0.1:9091
 }

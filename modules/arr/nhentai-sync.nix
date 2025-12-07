@@ -1,16 +1,25 @@
 {
   pkgs,
-  lib,
   config,
+  poetry2nix,
   ...
 }:
 let
-  nhentai = import ./package.nix { inherit pkgs; };
+  inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication;
+  nhentaiApp = mkPoetryApplication {
+    projectDir = pkgs.fetchFromGitHub {
+      owner = "RicterZ";
+      repo = "nhentai";
+      rev = "0.6.0-beta";
+      hash = "sha256-NIorZ5ZxoPzTfvMCM2oAE0uiPFya4L/Anacoy9D/79U=";
+    };
+  };
+
   user = "nhentai";
 in
 {
   environment.systemPackages = [
-    nhentai
+    nhentaiApp
   ];
 
   users.users.${user} = {
@@ -22,7 +31,7 @@ in
 
   systemd.services.nhentai-sync = {
     script = ''
-      ${lib.getExe nhentai} \
+      ${nhentaiApp}/bin/nhentai \
           --favorite \
           --download \
           --save-download-history \
