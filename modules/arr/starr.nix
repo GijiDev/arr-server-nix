@@ -21,8 +21,8 @@
         finalAttrs: previousAttrs:
         let
           inherit (previousAttrs) pname;
-          version = "3.0.2.1570";
-          hash = "sha256-4do2ylSntYTi8PKuzxhtgM6HcN05urD0GQzQAs0zrDw=";
+          version = "3.1.0.2093";
+          hash = "sha256-H/4NeKTmZTtVMzxha0hAJsbipx0qcF7cW1EOZAYABPw=";
           arch = "x64";
           os = "linux";
         in
