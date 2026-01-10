@@ -1,9 +1,6 @@
 {
   inputs = {
-    # Having troubles with upstream jellyfin
-    # > Illegal instruction (core dumped)
-    # Pin to last known good version
-    nixpkgs.url = "github:NixOS/nixpkgs?rev=6158d9170f0c55f07123559161447f657dc9f887";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-utils.url = "github:numtide/flake-utils";
 
